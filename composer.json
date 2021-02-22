@@ -15,7 +15,6 @@
             "email": "hsynlms47@gmail.com"
         }
     ],
-    "minimum-stability": "stable",
     "require": {
       "php": ">=7.2"
     },
