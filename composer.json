@@ -1,0 +1,27 @@
+{
+    "name": "hsynlms/url-record",
+    "description": "a simple slug generator",
+    "type": "library",
+    "homepage": "https://github.com/hsynlms/php-url-record",
+    "license": "MIT",
+    "keywords": [
+      "slug",
+      "slugify",
+      "seo-friendly"
+    ],
+    "authors": [
+        {
+            "name": "Huseyin ELMAS",
+            "email": "hsynlms47@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+      "php": ">=7.2"
+    },
+    "autoload": {
+      "psr-4": {
+          "hsynlms\\": "src"
+      }
+    }
+}
