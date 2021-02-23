@@ -1073,7 +1073,6 @@
         $c = $nameArr[$x];
 
         // validations
-        //var_dump(array_key_exists($c, $this->_seoCharacterTable));
         if ($convertNonWesternChars && array_key_exists($c, $this->_seoCharacterTable)) {
           // if non-western char conversion is enabled
           // try to get lower-case character from seo character table
