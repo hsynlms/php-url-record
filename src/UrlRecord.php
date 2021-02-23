@@ -1059,6 +1059,8 @@
       // validation
       if (gettype($name) !== 'string' || !$name) return $name;
 
+      $nameArr = mb_str_split($name);
+
       // allowed characters
       $okChars = 'abcdefghijklmnopqrstuvwxyz1234567890 _-';
 
@@ -1066,15 +1068,16 @@
       $output = '';
 
       // loop all characters in name
-      for ($x = 0; $x < strlen($name); $x++) {
+      for ($x = 0; $x < count($nameArr); $x++) {
         // get the current iterator (character)
-        $c = $name[$x];
+        $c = $nameArr[$x];
 
         // validations
+        //var_dump(array_key_exists($c, $this->_seoCharacterTable));
         if ($convertNonWesternChars && array_key_exists($c, $this->_seoCharacterTable)) {
           // if non-western char conversion is enabled
           // try to get lower-case character from seo character table
-          $c = strtolower(array_search($c, $this->_seoCharacterTable));
+          $c = mb_strtolower($this->_seoCharacterTable[$c]);
         }
 
         // validations
@@ -1082,13 +1085,13 @@
           // unicode chars are allowed in URLs
 
           // validations
-          if (preg_match('/[a-zA-Z-0-9]/', $c) || strpos($okChars, $c) !== false) {
+          if (preg_match('/[a-zA-Z-0-9]/', $c) || mb_strpos($okChars, $c) !== false) {
             // if the character is letter or digit
             // or the character does exist in 'okChars'
             // append the char to the output
             $output .= $c;
           }
-        } else if (strpos($okChars, $c) !== false) {
+        } else if (mb_strpos($okChars, $c) !== false) {
           // if the unicode chars are not allowed in URLs
           // and the character does exist in 'okChars'
           // append the char to the output
@@ -1099,20 +1102,20 @@
       // prepare output to be returned back
       $output = preg_replace('/\s/', '-', $output);
 
-      while (strpos($output, '--') !== false) {
+      while (mb_strpos($output, '--') !== false) {
         $output = preg_replace('/--/', '-', $output);
       }
 
-      while (strpos($output, '__') !== false) {
+      while (mb_strpos($output, '__') !== false) {
         $output = preg_replace('/__/', '_', $output);
       }
 
-      if (substr($output, 0, 1) === '-') {
-        $output = substr($output, 1, strlen($output));
+      if (mb_substr($output, 0, 1) === '-') {
+        $output = mb_substr($output, 1, strlen($output));
       }
 
-      if (substr($output, -1) === '-') {
-        $output = substr($output, 0, -1);
+      if (mb_substr($output, -1) === '-') {
+        $output = mb_substr($output, 0, -1);
       }
 
       // return the output
