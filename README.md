@@ -6,7 +6,7 @@ The reason behind this repository is nopCommerce, is an open source ASP.NET Core
 
 ## Compatibility
 
-PHP 7 >= 7.2.0 required due to use of built-in [mb_chr](https://www.php.net/manual/en/function.mb-chr.php) function.
+PHP 7 >= 7.4.0 required due to use of built-in [mb_str_split](https://www.php.net/manual/en/function.mb-str-split.php) function.
 
 ## Installation
 
